@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PostsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UsersController;
@@ -15,7 +16,13 @@ use App\Http\Controllers\LoginController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+//php artisan route:clear
+//Then you have to manually delete the file bootstrap/cache/routes.php
+Route::post('/users/login', [UsersController::class, 'login']);
+Route::get('/posts/getNewer', [PostsController::class, 'getNewer']);
 Route::resource('users', UsersController::class);
+Route::resource('posts', PostsController::class);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

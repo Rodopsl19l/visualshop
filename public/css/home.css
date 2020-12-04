@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
+.body {
+    background-color: black;
+}
+
+.navbar-transparent{
+	background-color: transparent !important;
+	transition: background-color .5s;
+}
+
+.navbar-visible{
+	background-color: #222222 !important;
+	transition: background-color .5s;
+}
+
+.navbar-brand{
+	font-family: 'Hemi Head';
+	text-transform: uppercase;
+	font-size: 2rem;
+}
+
+.navbar-brand img {
+	width: 150px;
+	margin-right: 20px;
+}
+
+.nav-item a{
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #b13333;
+    font-weight: bold;
+}
+
+.red-font {
+    color: #b13333;
+}
+
+#banner {
+	font-family: 'Oswald', sans-serif;
+}
+
+.banner-mask{
+	background-color: rgba(0,0,0, .6);
+}
+
+.banner-content{
+	padding: 30vh 0;
+	color: #fff;
+	font-size: 3rem;
+	text-transform: uppercase;
+}
+
+.section{
+    padding: 30px 0;
+    background-color: #e2e2e2;
+    color: #222222;
+    font-weight: bold;
+}
+
+.section-title{
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.75rem;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 30px;
+}
+
+.section-alert {
+    font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+    font-size: 20px;
+    color: red;
+    font-style: normal;
+}
+
+.section-text{
+	font-family: 'Montserrat', sans-serif;
+	text-align: justify;
+}
+
+.mini-banner-content{
+	padding: 100px 0;
+	text-align: center;
+	text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+	font-family: 'Oswald', sans-serif;
+}

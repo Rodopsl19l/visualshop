@@ -1,16 +1,15 @@
 $(document).ready(function () {
     $("#requiredField").hide()
     $("#emailNotFound").hide()
-    $("#incorrectPassword").hide()
-    $("#loginError").hide()
+    $("#forgotPasswordError").hide()
+    $("#enterPassword").hide()
 
-    $("#btnLogin").click(function (e) {
+    $("#btnValidateEmail").click(function (e) {
         e.preventDefault()
 
         var email = $("#email").val()
-        var password = $("#password").val()
 
-        if(email.length != 0 && password.length != 0) {
+        if(email.length != 0) {
             $.ajax({
                 type: 'POST',
                 url: 'http://127.0.0.1:8000/api/users/login',
@@ -43,12 +42,6 @@ $(document).ready(function () {
                 $("#email").css({"border-style": "solid", "border-color": "red"})
             } else {
                 $("#email").css({"border-style": "none"})
-            }
-
-            if(password.length == 0) {
-                $("#password").css({"border-style": "solid", "border-color": "red"})
-            } else {
-                $("#password").css({"border-style": "none"})
             }
         }
     })

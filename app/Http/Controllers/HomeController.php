@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() {
-        return [ 'message' => 'Hola mundo'];
+    public function index(Request $request) {
+        if($request->session()->has('user')) {
+
+            return view('home');
+        } else {
+            return redirect('login');
+        }
     }
 }

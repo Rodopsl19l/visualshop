@@ -79,4 +79,38 @@ class UsersController extends Controller
     {
         //
     }
+
+    public function login(Request $request) {
+        $data = [];
+
+        $email = $request->input('email');
+
+        $user = User::where('email', $email)->first();
+
+        if($user) {
+            $password = $request->input('password');
+
+            if($password == $user->password) {
+                $data = [
+                    'code' => 200,
+                    'message' => 'Ok',
+                    'data' => $user,
+                ];
+            } else {
+                $data = [
+                    'code' => 403,
+                    'message' => 'Error',
+                    'data' => 'Contraseña incorrecta',
+                ];
+            }
+        } else {
+            $data = [
+                'code' => 500,
+                'message' => 'Error',
+                'data' => 'No se encontro ningun usuario con ese correo',
+            ];
+        }
+
+        return response()->json($data);
+    }
 }
