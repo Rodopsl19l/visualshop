@@ -18,7 +18,7 @@ $(document).ready(function () {
             if(password === confirmPassword) {
                 $.ajax({
                     type: 'POST',
-                    url: 'http://127.0.0.1:8000/api/users/',
+                    url: window.location.origin + '/api/users/',
                     data: {
                         'user_type_id': 2,
                         'name': name,

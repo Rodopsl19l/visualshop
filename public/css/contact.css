@@ -82,3 +82,74 @@
     color: #FFFFFF;
 	font-family: 'Oswald', sans-serif;
 }
+
+#map{
+	padding-left: 0;
+    padding-right: 0;
+}
+
+.map-container{
+	overflow: hidden;
+    position: relative;
+    height: 500px;
+}
+
+.map-container iframe{
+	left:0;
+	top:0;
+	height:500px;
+	width:100%;
+	position:absolute;
+}
+
+footer{
+	background-color: #222;
+	padding: 50px 0;
+	color: #fff;
+}
+
+.logo{
+	width: 200px;
+}
+
+.footer-header-text{
+	color: #b13333;
+	text-align: left;
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.5rem;
+	margin-top: 20px;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.footer-text {
+	color: #fff;
+	text-align: left;
+	font-family: 'Oswald', sans-serif;
+	font-size: 1rem;
+	margin-top: 10px;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+
+#whatsapp{
+	background-color: green;
+	transition: background-color .5s;
+	color: #fff;
+	padding: 0px 15px;
+	font-size: 3rem;
+	border-radius: 50px;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin-bottom: 50px;
+	margin-right: 50px;
+	z-index: 1000;
+}
+
+#whatsapp:hover{
+	text-decoration: none;
+	color: green;
+	background-color: #fff;
+	transition: background-color .5s;
+}

@@ -13,7 +13,7 @@ $(document).ready(function () {
         if(email.length != 0 && password.length != 0) {
             $.ajax({
                 type: 'POST',
-                url: 'http://127.0.0.1:8000/api/users/login',
+                url: window.location.origin + '/api/users/login',
                 data: {
                     'email': email,
                     'password': password,

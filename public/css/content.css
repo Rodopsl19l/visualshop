@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
+.body {
+    background-color: black;
+}
+
+.navbar-visible{
+	background-color: #222222 !important;
+	transition: background-color .5s;
+}
+
+.navbar-brand{
+	font-family: 'Hemi Head';
+	text-transform: uppercase;
+	font-size: 2rem;
+}
+
+.navbar-brand img {
+	width: 150px;
+	margin-right: 20px;
+}
+
+.nav-item a{
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #b13333;
+    font-weight: bold;
+}
+
+.red-font {
+    color: #b13333;
+}
+
+.section{
+    padding: 135px 0 0 0;
+    background-color: #151515;
+    color: #FFFFFF;
+}
+
+.section-title{
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.75rem;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+}
+
+.section-text{
+	font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+.contentInfo {
+    margin: 0% 5%;
+}
+
+.contentImages {
+    margin: 15px;
+    margin-top: 60px;
+    font-weight: bold;
+    background-color: #222222;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.contentImagesText {
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.contentVideo {
+    margin: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+    background-color: #222222;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.contentVideoText {
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.userContentImage, .userCommentImage {
+    border-radius: 50%;
+}
+
+.contentComments {
+    margin: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+    background-color: #222222;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.comments {
+    width: 100%;
+}
+
+.textBox {
+    padding: 10px 0;
+}
+
+.textBox label {
+    display: block;
+    width: 100%;
+    font-size: 1.25rem;
+}
+
+.textBox input {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #b13333;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 7.5px;
+}
+
+.textBox input::placeholder {
+    color: #ffffff;
+    opacity: 0.75;
+}
+
+.singleComment {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.userCommentName {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.userCommentComment {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.userCommentDate {
+    font-size: 0.75rem;
+    color: darkgray;
+    font-weight: normal;
+}
+
+.btnCreateComment {
+    background-color: #3a6fff;
+    border: 2px solid #3a6fff;
+    color: #FFFFFF;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 5px 0;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btnCreateComment:hover {
+    background-color: #325fda;
+    border: 2px solid #325fda;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.commentRequiredField {
+    width: 100%;
+    text-align: left;
+}
+
+.commentRequiredField h2{
+    font-size: 15px;
+    color: red;
+    font-style: normal;
+}

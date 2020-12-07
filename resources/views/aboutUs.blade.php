@@ -45,27 +45,35 @@
                         <a class="nav-link" href="/contact">Contacto</a>
                     </li>
 
-                    <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin') ? 'active' : ''?>">
-                        <a class="nav-link" href="/admin">Administrar</a>
-                    </li>
+                    @if(!$userId)
+                        <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/login') ? 'active' : ''?>">
+                            <a class="nav-link" href="/login">Iniciar Sesión</a>
+                        </li>
+                    @endif
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Cuenta
-                        </a>
+                    @if($userId)
+                        <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin') ? 'active' : ''?> dropdown">
+                            <a class="nav-link" href="/admin">Administrar</a>
+                        </li>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/account">Editar</a>
-                            <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                        </div>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cuenta
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/account">Editar</a>
+                                <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </nav>
 
         <div id="banner">
             <div class="banner-mask">
-                <div class="banner-content" data-src="img/aboutUsBanner.jpg" data-pos-x="left" data-parallax>
+                <div class="banner-content" data-src="img/abouUs.jpg" data-pos-x="left" data-parallax>
                     <div class="container">
                         <div class="row">
                             <div class="col wow fadeIn">
@@ -84,108 +92,43 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="section-title">
-                            El contenido más nuevo
+                            TODO SOBRE NOSOTROS
                         </div>
                     </div>
 
-                    <div class="card-columns">
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            VisualShop es originario de Monterrey, Nuevo León, México.
+                            <br>
+                            <br>
+                            Este proyecto fue desarrollado como parte de la entrega del proyecto final de las materias Programación para Aplicaciones Web 2 (PAPW 2) y Producción Multimedia (PM),
+                            las cuales se imparten dentro de la carrera de Lic. en Multimedia y Animación Digital (LMAD) en la Facultad de Ciencias Físico Matemáticas (FCFM) de la Universidad Autónoma de Nuevo León (UANL).
+                            <br>
+                            <br>
+                            El proyecto fue desarrollado por dos personas:
                         </div>
 
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
+                        <br>
 
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mini-banner" data-src="img/miniBanner1.jpg" data-pos-x="left" data-parallax>
-            <div class="banner-mask">
-                <div class="mini-banner-content">
-                    <div class="container-fluid">
                         <div class="row">
-                            <div class="col wow fadeIn">
-                                <span class="red-font">¿BUSCAS AYUDA?
-                                </span><br>
-                                PUEDES <span class="red-font">CONTACTAR</span> CON LOS ARTISTAS
+                            <div class="col-6">
+                                <div class="card">
+                                    <img src="{{asset('img/aboutUs/team-1.jpg')}}" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Rodolfo Marcelino Peña Sánchez</h5>
+                                        <p class="card-text">Programador Front / Back End</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="section">
-            <div class="wow fadeInUp container">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="section-title">
-                            El contenido más nuevo
-                        </div>
-                    </div>
-
-                    <div class="card-columns">
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mini-banner" data-src="img/miniBanner1.jpg" data-pos-x="left" data-parallax>
-            <div class="banner-mask">
-                <div class="mini-banner-content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col wow fadeIn">
-                                <span class="red-font">¿QUIERES PUBLICAR TU CONTENIDO?
-                                </span><br>
-                                PONTE EN <span class="red-font">CONTACTO</span> CON NOSOTROS
+                            <div class="col-6">
+                                <div class="card">
+                                    <img src="{{asset('img/aboutUs/team-1.jpg')}}" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Javier Landeros Gaheta</h5>
+                                        <p class="card-text">Programador Front End</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

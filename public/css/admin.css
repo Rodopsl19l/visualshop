@@ -95,3 +95,43 @@
     color: #FFFFFF;
     text-decoration: none;
 }
+
+.btnEdit {
+    width: 100%;
+    background-color: #2eacdd;
+    border: 2px solid #2eacdd;
+    color: #FFFFFF;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 12px 0;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btnEdit:hover {
+    background-color: #2b98c4;
+    border: 2px solid #2b98c4;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.btnDelete {
+    width: 100%;
+    background-color: #b13333;
+    border: 2px solid #b13333;
+    color: #FFFFFF;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 12px 0;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btnDelete:hover {
+    background-color: #962a2a;
+    border: 2px solid #962a2a;
+    color: #FFFFFF;
+    text-decoration: none;
+}

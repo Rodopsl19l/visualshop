@@ -45,20 +45,28 @@
                         <a class="nav-link" href="/contact">Contacto</a>
                     </li>
 
-                    <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin') ? 'active' : ''?>">
-                        <a class="nav-link" href="/admin">Administrar</a>
-                    </li>
+                    @if(!$userId)
+                        <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/login') ? 'active' : ''?>">
+                            <a class="nav-link" href="/login">Iniciar Sesión</a>
+                        </li>
+                    @endif
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Cuenta
-                        </a>
+                    @if($userId)
+                        <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin') ? 'active' : ''?> dropdown">
+                            <a class="nav-link" href="/admin">Administrar</a>
+                        </li>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/account">Editar</a>
-                            <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                        </div>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cuenta
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/account">Editar</a>
+                                <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </nav>
@@ -84,51 +92,34 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="section-title">
-                            Aprende con nosotros
+                            ¿Quieres formar parte de la comunidad?
                         </div>
                     </div>
 
-                    <div class="card-columns">
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
+                    <div class="col-8">
+                        <div class="section-text">
+                            ¿Te gustaría poder formar parte de esta comunidad pero no sabes como empezar?
+                            <br>
+                            <br>
+                            No te preocupes, nosotros te brindaremos todo el apoyo necesesario para que puedas lograrlo.
+                            <br>
+                            <br>
+                            La sección de entrenamiento es la ideal si estas buscando especializarte poco a poco, ya que cuenta con
+                            diversos tutoriales para aprender los softwares mas utilizados en la actualidad para crear el mejor contenido
+                            multimedia.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mini-banner" data-src="img/miniBanner1.jpg" data-pos-x="left" data-parallax>
+        <div class="mini-banner" data-src="img/training/3dMaxBanner.jpg" data-pos-x="left" data-parallax>
             <div class="banner-mask">
                 <div class="mini-banner-content">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col wow fadeIn">
-                                <span class="red-font">¿BUSCAS AYUDA?
-                                </span><br>
-                                PUEDES <span class="red-font">CONTACTAR</span> CON LOS ARTISTAS
+                                <span>3D MAX</span>
                             </div>
                         </div>
                     </div>
@@ -141,35 +132,26 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="section-title">
-                            El contenido más nuevo
+                            APRENDE 3D MAX
                         </div>
                     </div>
 
-                    <div class="card-columns">
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Proximamente
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div class="mini-banner" data-src="img/training/afterEffectsBanner.jpg" data-pos-x="left" data-parallax>
+            <div class="banner-mask">
+                <div class="mini-banner-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col wow fadeIn">
+                                <span>AFTER EFFECTS</span>
                             </div>
                         </div>
                     </div>
@@ -177,16 +159,242 @@
             </div>
         </div>
 
-        <div class="mini-banner" data-src="img/miniBanner1.jpg" data-pos-x="left" data-parallax>
+        <div class="section">
+            <div class="wow fadeInUp container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title">
+                            APRENDE AFTER EFFECTS
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Proximamente
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mini-banner" data-src="img/training/blenderBanner.jpg" data-pos-x="left" data-parallax>
             <div class="banner-mask">
                 <div class="mini-banner-content">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col wow fadeIn">
-                                <span class="red-font">¿QUIERES PUBLICAR TU CONTENIDO?
-                                </span><br>
-                                PONTE EN <span class="red-font">CONTACTO</span> CON NOSOTROS
+                                <span>BLENDER</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="wow fadeInUp container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title">
+                            APRENDE BLENDER
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Proximamente
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mini-banner" data-src="img/training/cinema4dBanner.jpg" data-pos-x="left" data-parallax>
+            <div class="banner-mask">
+                <div class="mini-banner-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col wow fadeIn">
+                                <span>CINEMA 4D</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="wow fadeInUp container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title">
+                            APRENDE CINEMA 4D
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Proximamente
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mini-banner" data-src="img/training/illustratorBanner.jpg" data-pos-x="left" data-parallax>
+            <div class="banner-mask">
+                <div class="mini-banner-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col wow fadeIn">
+                                <span>Illustrator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="wow fadeInUp container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title">
+                            APRENDE ILLUSTRATOR
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Proximamente
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mini-banner" data-src="img/training/mayaBanner.jpg" data-pos-x="left" data-parallax>
+            <div class="banner-mask">
+                <div class="mini-banner-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col wow fadeIn">
+                                <span>MAYA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="wow fadeInUp container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title">
+                            APRENDE MAYA
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Proximamente
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mini-banner" data-src="img/training/photoshopBanner.jpg" data-pos-x="left" data-parallax>
+            <div class="banner-mask">
+                <div class="mini-banner-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col wow fadeIn">
+                                <span>PHOTOSHOP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="wow fadeInUp container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title">
+                            APRENDE PHOTOSHOP
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Proximamente
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mini-banner" data-src="img/training/procreateBanner.jpg" data-pos-x="left" data-parallax>
+            <div class="banner-mask">
+                <div class="mini-banner-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col wow fadeIn">
+                                <span>PROCREATE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="wow fadeInUp container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title">
+                            APRENDE PROCREATE
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Proximamente
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mini-banner" data-src="img/training/unrealEngineBanner.jpg" data-pos-x="left" data-parallax>
+            <div class="banner-mask">
+                <div class="mini-banner-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col wow fadeIn">
+                                <span>UNREAL ENGINE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="wow fadeInUp container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title">
+                            APRENDE UNREAL ENGINE
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Proximamente
                         </div>
                     </div>
                 </div>

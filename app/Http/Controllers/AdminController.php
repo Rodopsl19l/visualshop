@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index() {
-        $posts = Post::all();
+    public function index(Request $request) {
+        if($request->session()->has('user')) {
+            $posts = Post::all();
 
-        return view('admin', compact('posts'));
+            return view('admin', compact('posts'));
+        } else {
+            return redirect('/');
+        }
     }
 
     public function add(Request $request) {
@@ -18,8 +22,16 @@ class AdminController extends Controller
             $userId = $request->session()->get('user.id');
 
             return view('add', compact('userId'));
+        } else {
+            return redirect('/');
         }
+    }
 
-        return view('add');
+    public function edit(Request $request, $id) {
+        if($request->session()->has('user')) {
+            return view('edit', compact('id'));
+        } else {
+            return redirect('/');
+        }
     }
 }

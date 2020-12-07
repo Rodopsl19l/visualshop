@@ -6,7 +6,15 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function index() {
-        return view('contact');
+    public function index(Request $request) {
+        if($request->session()->has('user')) {
+            $userId = $request->session()->get('user');
+
+            return view('contact', compact('userId'));
+        } else {
+            $userId = 0;
+
+            return view('contact', compact('userId'));
+        }
     }
 }

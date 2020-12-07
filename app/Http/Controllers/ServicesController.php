@@ -6,7 +6,15 @@ use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
-    public function index() {
-        return view('services');
+    public function index(Request $request) {
+        if($request->session()->has('user')) {
+            $userId = $request->session()->get('user');
+
+            return view('services', compact('userId'));
+        } else {
+            $userId = 0;
+
+            return view('services', compact('userId'));
+        }
     }
 }

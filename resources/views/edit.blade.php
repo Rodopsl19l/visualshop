@@ -4,15 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Account | Visual Shop</title>
+        <title>Admin | Visual Shop</title>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-        <link rel="stylesheet" href="{{asset('css/account.css')}}">
+        <link rel="stylesheet" href="{{asset('css/edit.css')}}">
     </head>
 
     <body>
-        <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-transparent bg-dark navbar-dark">
+        <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-visible bg-dark navbar-dark">
             <a class="navbar-brand" href="/">
                 <img src="{{asset('img/logo.png')}}">
             </a>
@@ -45,7 +45,7 @@
                         <a class="nav-link" href="/contact">Contacto</a>
                     </li>
 
-                    <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin') ? 'active' : ''?>">
+                    <li class="nav-item active">
                         <a class="nav-link" href="/admin">Administrar</a>
                     </li>
 
@@ -63,32 +63,11 @@
             </div>
         </nav>
 
-        <div id="banner">
-            <div class="banner-mask">
-                <div id="coverCoverImage" class="banner-content" data-pos-x="left" data-parallax>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-3 wow fadeIn">
-                                <img id="coverProfileImage" class="card-img-top" style="border-radius: 50%;">
-                            </div>
-
-                            <div class="col-9 wow fadeIn">
-                                <br>
-                                <span id="coverName" class="red-font"> Nombre del usuario</span>
-                                <br>
-                                <span id="coverUserType">Tipo de usuario</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="section">
             <div class="wow fadeInUp container">
                 <div class="row">
                     <div class="section-title">
-                        Editar mi información
+                        Editar contenido
                     </div>
                 </div>
 
@@ -97,71 +76,55 @@
                         <h2>Este campo es requerido</h2>
                     </div>
 
-                    <div id="userError" class="userError">
-                        <h2>Ocurrió un error al actualizar la información, intenta de nuevo</h2>
+                    <div id="postError" class="postError">
+                        <h2>Ocurrió un error al agregar el contenido, intenta de nuevo</h2>
                     </div>
 
-                    <div class="editBox">
+                    <div class="addBox">
                         <div class="textBox">
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="name">Nombre</label>
-                                     <input id="name" class="addInput" type="text" name="name" placeholder="Nombre">
-                                </div>
-
-                                <div class="col-6">
-                                    <label for="lastname">Apellido</label>
-                                    <input id="lastname" class="addInput" type="text" name="lastname" placeholder="Apellido">
-                                </div>
-                            </div>
+                            <label for="name">Nombre del contenido</label>
+                            <input id="name" class="addInput" type="text" name="name" placeholder="Nombre del contenido">
                         </div>
 
                         <div class="textBox">
-                            <label for="email">Email</label>
-                            <input id="email" class="addInput" type="email" name="email" placeholder="Correo" readonly>
-                        </div>
-
-                        <div class="textBox">
-                            <label for="username">Username</label>
-                            <input id="username" class="addInput" type="username" name="username" placeholder="Username" readonly>
-                        </div>
-
-                        <div class="textBox">
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="password">Contraseña</label>
-                                     <input id="password" class="addInput" type="password" name="password" placeholder="Contraseña">
-                                </div>
-
-                                <div class="col-6">
-                                    <label for="confirmPassword">Confirmar contraseña</label>
-                                    <input id="confirmPassword" class="addInput" type="password" name="password" placeholder="Confirmar contraseña" readonly>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="textBox">
-                            <label for="phone">Teléfono</label>
-                            <input id="phone" class="addInput" type="phone" name="phone" placeholder="Teléfono">
+                            <label for="description">Descripción del contenido</label>
+                            <input id="description" class="addInput" type="text" name="description" placeholder="Descripción del contenido">
                         </div>
 
                         <div class="fileBox">
-                            <label for="profileImage">Imagen de perfil</label>
-                            <img id="profileImage" class="card-img-top">
-                            <input id="profileImage" class="form-control-file" type="file" name="profileImage">
+                            <label for="imageOne">Imagen 1 del contenido</label>
+                            <img id="imageOneImage" class="card-img-top">
+                            <input id="imageOne" class="form-control-file" type="file" name="imageOne">
                         </div>
 
                         <div class="fileBox">
-                            <label for="coverImage">Imagen de portada</label>
-                            <img id="coverImage" class="card-img-top">
-                            <input id="coverImage" class="form-control-file" type="file" name="coverImage">
+                            <label for="imageTwo">Imagen 2 del contenido</label>
+                            <img id="imageTwoImage" class="card-img-top">
+                            <input id="imageTwo" class="form-control-file" type="file" name="imageTwo">
+                        </div>
+
+                        <div class="fileBox">
+                            <label for="imageThree">Imagen 3 del contenido</label>
+                            <img id="imageThreeImage" class="card-img-top">
+                            <input id="imageThree" class="form-control-file" type="file" name="imageThree">
+                        </div>
+
+                        <div class="fileBox">
+                            <label for="videoOne">Video del contenido</label>
+                            <video id="videoOneVideo" class="card-img-top" autoplay loop muted></video>
+                            <input id="videoOne" class="form-control-file" type="file" name="videoOne">
+                        </div>
+
+                        <div class="checkBox text-left">
+                            <input id="publish" class="form-check-input" type="checkbox" name="publish">
+                            <label class="form-check-label" for="publish">Hacer público el contenido</label>
                         </div>
 
                         <button id="btnEdit" class="btnEdit">
-                            Editar información
+                            Editar contenido
                         </button>
 
-                        <input id="userId" type="hidden" data-value="{{ $userId }}"/>
+                        <input id="contentId" type="hidden" data-value="{{ $id }}"/>
                     </div>
                 </div>
             </div>
@@ -174,6 +137,6 @@
         <script src="{{asset('js/jquery.parallax.min.js')}}"></script>
         <script src="{{asset('js/wow.min.js')}}"></script>
         <script src="{{asset('js/redirect.js')}}"></script>
-        <script src="{{asset('js/account.js')}}"></script>
+        <script src="{{asset('js/edit.js')}}"></script>
     </body>
 </html>

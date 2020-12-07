@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
-        if (scroll <= 350) {
+        if (scroll <= 50) {
             $("#navbar").addClass("navbar-transparent");
             $("#navbar").removeClass("navbar-visible");
         } else {
@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:8000/api/posts',
+        url: window.location.origin + '/api/posts',
         success: function(data) {
             var code = data['code']
 
@@ -44,20 +44,12 @@ $(document).ready(function () {
                                     "<p class='card-text'>" + contentDescription + "</p>" +
                                 "</div>" +
                                 "<div class='btn-group' role='group'>" +
-                                    "<button id='btnEditContent' type='button' class='btn btn-info' data-value='" + contentId + "'>Editar</button>" +
-                                    "<button id='btnDeleteContent' type='button' class='btn btn-danger' data-value='" + contentId + "'>Eliminar</button>" +
+                                    "<a class='btnEdit' href='/admin/edit/"+ contentId + "'>Editar</a>" +
+                                    "<a class='btnDelete' href='/admin/edit/"+ contentId + "'>Eliminar</a>" +
                                 "</div>" +
                             "</div>"
                         )
                     }
-
-                    $("#contentCards").on('click', '#btnEditContent', function(e) {
-                        e.preventDefault();
-
-                        var editContentId = $("#btnEditContent").data('value')
-
-                        alert("se quiere editar: " + editContentId)
-                    })
                 } else {
                     $("#contentAlert").show()
                 }

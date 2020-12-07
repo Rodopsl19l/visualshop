@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\PostImage;
 use App\Models\PostVideo;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -45,7 +47,7 @@ class PostsController extends Controller
             $data = [
                 'code' => 500,
                 'message' => 'Error',
-                'data' => 'No se encontro ningun usuario'
+                'data' => 'No se encontro contenido'
             ];
         }
 
@@ -179,7 +181,57 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [];
+
+        $post = Post::find($id);
+
+        if($post) {
+            $postId = $post->id;
+
+            $postImages = PostImage::where('post_id', $postId)->get();
+
+            $post->post_images = $postImages;
+
+            $postVideo = PostVideo::where('post_id', $postId)->get();
+
+            $post->post_video = $postVideo;
+
+            $postUserId = $post->user_id;
+
+            $postUser = User::where('id', $postUserId)->get();
+
+            $post->user = $postUser;
+
+            $comments = Comment::where('post_id', $postId)->get();
+
+            $commentsLength = sizeof($comments);
+
+            for($i = 0; $i < $commentsLength; $i++) {
+                $userComment = $comments[$i]->user_id;
+
+                $user = User::find($userComment);
+
+                $comments[$i]->user = $user;
+            }
+
+            $post->comments = $comments;
+
+            $data = [
+                'code' => 200,
+                'message' => 'Ok',
+                'data' => [
+                    'post' => $post,
+                ],
+            ];
+        } else {
+            $data = [
+                'code' => 500,
+                'message' => 'Error',
+                'data' => 'No se encontro el contenido con el id: ' . $id,
+            ];
+        }
+
+        return response()->json($data);
     }
 
     /**
@@ -191,7 +243,33 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [];
+
+        $post = Post::find($id);
+
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $published = $request->input('published');
+
+        $post['name'] = $name;
+        $post['description'] = $description;
+        $post['published'] = $published;
+
+        if($post->update()){
+            $data = [
+                'code' => 200,
+                'message' => 'Ok',
+                'data' => 'Post editado correctamente',
+            ];
+        } else {
+            $data = [
+                'code' => 500,
+                'message' => 'Error',
+                'data' => 'Ocurrió un error al editar el contenido'
+            ];
+        }
+
+        return response()->json($data);
     }
 
     /**
@@ -208,7 +286,7 @@ class PostsController extends Controller
     public function getNewer() {
         $data = [];
 
-        $posts = Post::where('published', '1')->orderByDesc('created_at')->limit(3)->get();
+        $posts = Post::where('published', '1')->orderByDesc('updated_at')->limit(3)->get();
 
         if($posts) {
             foreach($posts as $post) {

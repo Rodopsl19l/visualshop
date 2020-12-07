@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserType;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -54,7 +55,33 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return User::find($id);
+        $data = [];
+
+        $user = User::find($id);
+
+        $userTypeId = $user->user_type_id;
+
+        $userType = UserType::find($userTypeId);
+
+        $user->user_type = $userType;
+
+        if($user) {
+            $data = [
+                'code' => 200,
+                'message' => 'Ok',
+                'data' => [
+                    'user' => $user
+                ],
+            ];
+        } else {
+            $data = [
+                'code' => 500,
+                'message' => 'Error',
+                'data' => 'No se encontro usuario con el id: ' .$id,
+            ];
+        }
+
+        return response()->json($data);
     }
 
     /**

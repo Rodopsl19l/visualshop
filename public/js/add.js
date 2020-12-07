@@ -27,7 +27,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: 'POST',
-                url: 'http://127.0.0.1:8000/api/posts',
+                url: window.location.origin + '/api/posts',
                 data: formData,
                 contentType: false,
                 processData: false,

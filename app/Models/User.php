@@ -18,4 +18,8 @@ class User extends Model
         'profile_photo_path',
         'cover_photo_path',
     ];
+
+    public function userType() {
+        return $this->belongsTo(UserType::class);
+    }
 }

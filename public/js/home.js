@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
-        if (scroll <= 350) {
+        if (scroll <= 50) {
             $("#navbar").addClass("navbar-transparent");
             $("#navbar").removeClass("navbar-visible");
         } else {
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:8000/api/posts/getNewer',
+        url: window.location.origin + '/api/posts/getNewer',
         success: function(data) {
             var code = data['code']
 
@@ -26,6 +26,7 @@ $(document).ready(function () {
                     var posts = data['data'].posts
 
                     for(i = 0; i < postsLength; i++) {
+                        var contentId = posts[i]['id']
                         var contentName = posts[i]['name']
                         var contentDescription = posts[i]['description']
 
@@ -33,12 +34,15 @@ $(document).ready(function () {
                         var contentPreviewImage = postImages[0].url
 
                         $("#newerContentCards").append(
-                            "<div class='card'>" +
+                            "<div class='card' data-value='" + contentId + "'>" +
                                 "<img src='" + contentPreviewImage + "' class='card-img-top'>" +
-                                    "<div class='card-body'>" +
-                                        "<h5 class='card-title'>" + contentName + "</h5>" +
-                                        "<p class='card-text'>" + contentDescription + "</p>" +
-                                    "</div>" +
+                                "<div class='card-body'>" +
+                                    "<h5 class='card-title'>" + contentName + "</h5>" +
+                                    "<p class='card-text'>" + contentDescription + "</p>" +
+                                "</div>" +
+                                "<div class='btn-group' role='group'>" +
+                                    "<a class='btnViewContent' href='/content/"+ contentId + "'>Ver completo</a>" +
+                                "</div>" +
                             "</div>"
                         )
                     }
