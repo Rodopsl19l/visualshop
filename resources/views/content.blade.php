@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Admin | Visual Shop</title>
+        <title>Contenido | Visual Shop</title>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -45,20 +45,28 @@
                         <a class="nav-link" href="/contact">Contacto</a>
                     </li>
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/admin">Administrar</a>
-                    </li>
+                    @if(!$userId)
+                        <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/login') ? 'active' : ''?>">
+                            <a class="nav-link" href="/login">Iniciar Sesión</a>
+                        </li>
+                    @endif
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Cuenta
-                        </a>
+                    @if($userId)
+                        <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin') ? 'active' : ''?> dropdown">
+                            <a class="nav-link" href="/admin">Administrar</a>
+                        </li>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/account">Editar</a>
-                            <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                        </div>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cuenta
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/account">Editar</a>
+                                <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </nav>
@@ -67,42 +75,15 @@
             <div class="wow fadeInUp container-fluid">
                 <div class="contentInfo">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 col-md-12">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 col-md-6">
                                     <div id="contentName" class="section-title text-left">
                                         Nombre del contenido
                                     </div>
 
                                     <div id="contentDescription" class="section-text">
                                         Descripción del contenido
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="section-text">
-                                                Creado por
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <img id="userContentImage" class="card-img-top userContentImage">
-                                                </div>
-
-                                                <div class="col-10">
-                                                    <div id="userContentName" class="userContentName"></div>
-                                                    <div id="userContentEmail" class="userContentEmail"></div>
-                                                    <div id="userContentPhone" class="userContentPhone"></div>
-                                                    <div id="userContentPhone" class="userContentPhone"></div>
-                                                    <button>Contactar</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -115,15 +96,15 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 contentImage">
                                         <img id="contentImageOne" class="card-img-top">
                                     </div>
 
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 contentImage">
                                         <img id="contentImageTwo" class="card-img-top">
                                     </div>
 
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 contentImage">
                                         <img id="contentImageThree" class="card-img-top">
                                     </div>
                                 </div>
@@ -137,8 +118,33 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <video id="contentVideoOne" class="card-img-top" autoplay loop muted></video>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row contentOwner">
+                                <div class="row">
+                                    <div class="col-12 contentOwnertext">
+                                        Creador del contenido
+                                    </div>
+
+                                    <div class="col-12 col-md-6">
+                                        <div class="row">
+                                            <div class="col-12 col-md-4">
+                                                <img id="userContentImage" class="card-img-top userContentImage">
+                                            </div>
+
+                                            <div class="col-12 col-md-8">
+                                                <div id="userContentName" class="userContentName"></div>
+                                                <div id="userContentEmail" class="userContentEmail"></div>
+                                                <div id="userContentPhone" class="userContentPhone"></div>
+                                                <div id="userContentPhone" class="userContentPhone"></div>
+                                                <button id="btnFollowUser" class="btn btn-success">Seguir usuario</button>
+                                                <button id="btnUnfollowUser" class="btn btn-danger">Dejar de seguir</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

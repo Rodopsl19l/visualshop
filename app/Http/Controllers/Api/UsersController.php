@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class UsersController extends Controller
 {
@@ -139,5 +140,91 @@ class UsersController extends Controller
         }
 
         return response()->json($data);
+    }
+
+    public function editUser(Request $request) {
+        $data = [];
+        $profileImagePath = 'public/img/profileImages';
+        $coverImagePath = 'public/img/coverImages';
+
+        $id = $request->input('id');
+
+        $user = User::find($id);
+
+        $profileImage = $request->file('profileImage');
+
+        if($profileImage) {
+            $previewProfileImagePath = $user['profile_photo_path'];
+
+            $newProfileImageName = $this->generateRandomString().'.png';
+            $newProfileImagePath = $request->file('profileImage')->storeAs($profileImagePath, $newProfileImageName);
+            $newProfileImagePath = str_replace('public', 'storage', $newProfileImagePath);
+
+            $user['profile_photo_path'] = $newProfileImagePath;
+
+            if($previewProfileImagePath != null) {
+                File::delete( public_path($previewProfileImagePath));
+            }
+        }
+
+        $coverImage = $request->file('coverImage');
+
+        if($coverImage) {
+            $previewCoverImagePath = $user['cover_photo_path'];
+
+            $newCoverImageName = $this->generateRandomString().'.png';
+            $newCoverImagePath = $request->file('coverImage')->storeAs($coverImagePath, $newCoverImageName);
+            $newCoverImagePath = str_replace('public', 'storage', $newCoverImagePath);
+
+            $user['cover_photo_path'] = $newCoverImagePath;
+
+            if($previewCoverImagePath != null) {
+                File::delete( public_path($previewCoverImagePath));
+            }
+        }
+
+        $name = $request->input('name');
+        $lastname = $request->input('lastname');
+        $email = $request->input('email');
+        $username = $request->input('username');
+        $password = $request->input('password');
+        $phone = $request->input('phone');
+
+        $user['name'] = $name;
+        $user['lastname'] = $lastname;
+        $user['email'] = $email;
+        $user['username'] = $username;
+
+        if($password != 'no') {
+            $user['password'] = $password;
+        }
+
+        $user['phone'] = $phone;
+
+        if($user->save()) {
+            $data = [
+                'code' => 200,
+                'message' => 'Ok',
+                'data' => 'Usuario actualizado correctamente',
+            ];
+        } else {
+            $data = [
+                'code' => 500,
+                'message' => 'Error',
+                'data' => 'Ocurrió un error al actualizar el usuario',
+            ];
+        }
+
+        return response()->json($data);
+    }
+
+    public function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }

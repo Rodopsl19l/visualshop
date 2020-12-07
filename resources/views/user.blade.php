@@ -4,15 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Admin | Visual Shop</title>
+        <title>Usuario | Visual Shop</title>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-        <link rel="stylesheet" href="{{asset('css/edit.css')}}">
+        <link rel="stylesheet" href="{{asset('css/user.css')}}">
     </head>
 
     <body>
-        <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-visible bg-dark navbar-dark">
+        <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-transparent bg-dark navbar-dark">
             <a class="navbar-brand" href="/">
                 <img src="{{asset('img/logo.png')}}">
             </a>
@@ -71,72 +71,51 @@
             </div>
         </nav>
 
-        <div class="section">
-            <div class="wow fadeInUp container">
-                <div class="row">
-                    <div class="section-title">
-                        Editar contenido
-                    </div>
-                </div>
+        <div id="banner">
+            <div class="banner-mask">
+                <div id="coverCoverImage" class="banner-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-3 wow fadeIn">
+                                <img id="coverProfileImage" class="card-img-top" style="border-radius: 50%;">
+                            </div>
 
-                <div class="row">
-                    <div id="requiredField" class="requiredField">
-                        <h2>Este campo es requerido</h2>
-                    </div>
-
-                    <div id="postError" class="postError">
-                        <h2>Ocurrió un error al agregar el contenido, intenta de nuevo</h2>
-                    </div>
-
-                    <div class="addBox">
-                        <div class="textBox">
-                            <label for="name">Nombre del contenido</label>
-                            <input id="name" class="addInput" type="text" name="name" placeholder="Nombre del contenido">
+                            <div class="col-9 wow fadeIn">
+                                <br>
+                                <span id="coverName" class="red-font"> Nombre del usuario</span>
+                                <br>
+                                <span id="coverUsername">Tipo de usuario</span>
+                            </div>
                         </div>
-
-                        <div class="textBox">
-                            <label for="description">Descripción del contenido</label>
-                            <input id="description" class="addInput" type="text" name="description" placeholder="Descripción del contenido">
-                        </div>
-
-                        <div class="fileBox">
-                            <label for="imageOne">Imagen 1 del contenido</label>
-                            <img id="imageOneImage" class="card-img-top">
-                            <input id="imageOne" class="form-control-file" type="file" name="imageOne">
-                        </div>
-
-                        <div class="fileBox">
-                            <label for="imageTwo">Imagen 2 del contenido</label>
-                            <img id="imageTwoImage" class="card-img-top">
-                            <input id="imageTwo" class="form-control-file" type="file" name="imageTwo">
-                        </div>
-
-                        <div class="fileBox">
-                            <label for="imageThree">Imagen 3 del contenido</label>
-                            <img id="imageThreeImage" class="card-img-top">
-                            <input id="imageThree" class="form-control-file" type="file" name="imageThree">
-                        </div>
-
-                        <div class="fileBox">
-                            <label for="videoOne">Video del contenido</label>
-                            <video id="videoOneVideo" class="card-img-top" autoplay loop muted></video>
-                            <input id="videoOne" class="form-control-file" type="file" name="videoOne">
-                        </div>
-
-                        <div class="checkBox text-left">
-                            <input id="publish" class="form-check-input" type="checkbox" name="publish">
-                            <label class="form-check-label" for="publish">Hacer público el contenido</label>
-                        </div>
-
-                        <button id="btnEdit" class="btnEdit">
-                            Editar contenido
-                        </button>
-
-                        <input id="contentId" type="hidden" data-value="{{ $id }}"/>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="section">
+            <div class="wow fadeInUp container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title text-left">
+                            CONTENIDO
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div id="contentAlert" class="section-alert">
+                            No hay contenido
+                        </div>
+                    </div>
+
+                    <div id="contentCards" class="card-columns text-center">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input id="id" type="hidden" data-value="{{ $id }}"/>
+        <input id="userId" type="hidden" data-value="{{ $userId }}"/>
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -145,6 +124,6 @@
         <script src="{{asset('js/jquery.parallax.min.js')}}"></script>
         <script src="{{asset('js/wow.min.js')}}"></script>
         <script src="{{asset('js/redirect.js')}}"></script>
-        <script src="{{asset('js/edit.js')}}"></script>
+        <script src="{{asset('js/user.js')}}"></script>
     </body>
 </html>

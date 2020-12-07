@@ -68,85 +68,90 @@
 	margin-bottom: 30px;
 }
 
-.editBox {
-    width: 100%;
-}
-
-.requiredField {
-    width: 100%;
-    text-align: left;
-}
-
-.requiredField h2{
-    font-size: 15px;
+.section-alert {
+    font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+    font-size: 20px;
     color: red;
     font-style: normal;
 }
 
-.userError {
+.btnAdd {
     width: 100%;
-    text-align: left;
-}
-
-.userError h2{
-    font-size: 15px;
-    color: red;
-    font-style: normal;
-}
-
-.passwordsError {
-    width: 100%;
-    text-align: left;
-}
-
-.passwordsError h2{
-    font-size: 15px;
-    color: red;
-    font-style: normal;
-}
-
-.textBox, .fileBox{
-    width: 75%;
-    padding: 10px 0;
-}
-
-.textBox label, .fileBox label {
-    display: block;
-    width: 100%;
-    font-size: 1.25rem;
-}
-
-.textBox input, .fileBox input {
-    display: block;
-    width: 100%;
-    border: none;
-    background-color: #b13333;
-    color: #ffffff;
-    border-radius: 5px;
-    font-size: 1rem;
-    padding: 7.5px;
-}
-
-.textBox input::placeholder {
-    color: #ffffff;
-    opacity: 0.75;
-}
-
-.btnEdit {
     background-color: #3a6fff;
     border: 2px solid #3a6fff;
     color: #FFFFFF;
     padding: 5px;
     font-size: 18px;
     cursor: pointer;
-    margin: 10px 0;
+    margin: 12px 0;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btnAdd:hover {
+    background-color: #325fda;
+    border: 2px solid #325fda;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.btnEdit {
+    width: 100%;
+    background-color: #2eacdd;
+    border: 2px solid #2eacdd;
+    color: #FFFFFF;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 12px 0;
     text-decoration: none;
     border-radius: 5px;
 }
 
 .btnEdit:hover {
-    background-color: #325fda;
-    border: 2px solid #325fda;
+    background-color: #2b98c4;
+    border: 2px solid #2b98c4;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.btnDelete {
+    width: 100%;
+    background-color: #b13333;
+    border: 2px solid #b13333;
+    color: #FFFFFF;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 12px 0;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btnDelete:hover {
+    background-color: #962a2a;
+    border: 2px solid #962a2a;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.btnViewContent {
+    width: 100%;
+    background-color: #2eacdd;
+    border: 2px solid #2eacdd;
+    color: #FFFFFF;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 12px 0;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btnViewContent:hover {
+    background-color: #2b98c4;
+    border: 2px solid #2b98c4;
     color: #FFFFFF;
     text-decoration: none;
 }

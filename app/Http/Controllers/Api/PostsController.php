@@ -319,6 +319,47 @@ class PostsController extends Controller
         return response()->json($data);
     }
 
+    public function getByUser($id) {
+        $data = [];
+
+        $user = User::find($id);
+
+        $posts = Post::where('user_id', $id)->get();
+
+        if(sizeof($posts) != 0) {
+            foreach($posts as $post) {
+                $postId = $post->id;
+
+                $postImages = PostImage::where('post_id', $postId)->get();
+
+                $post->post_images = $postImages;
+
+                $postVideo = PostVideo::where('post_id', $postId)->get();
+
+                $post->post_video = $postVideo;
+            }
+
+            $data = [
+                'code' => 200,
+                'message' => 'Ok',
+                'data' => [
+                    'user' => $user,
+                    'posts' => $posts,
+                ],
+            ];
+        } else {
+            $data = [
+                'code' => 500,
+                'message' => 'Error',
+                'data' => 'No se encontro ningun post de este usuario'
+            ];
+        }
+
+        return response()->json($data);
+
+        return response()->json($posts);
+    }
+
     public function generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);

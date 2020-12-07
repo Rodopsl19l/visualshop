@@ -15,11 +15,13 @@ $(document).ready(function () {
         }
     });
 
-    var userId = $("#userId").data('value')
+    var id = $("#id").data('value')
+
+    console.log(id)
 
     $.ajax({
         type: 'GET',
-        url: window.location.origin + '/api/posts/getByUser/' + userId,
+        url: window.location.origin + '/api/posts/getByUser/' + id,
         success: function(data) {
             var code = data['code']
 
@@ -27,6 +29,28 @@ $(document).ready(function () {
                 var postsLength = data['data'].posts.length;
                 if(postsLength != 0) {
                     $("#contentCards").show()
+
+                    var user = data['data'].user
+                    var userName = user.name
+                    var userLastname = user.lastname
+                    var userUsername = user.username
+                    var userProfileImage = user.profile_photo_path
+                    var userCoverImage = user.cover_photo_path
+
+                    if(userCoverImage == null) {
+                        $("#banner").css({"background": "url('" + window.location.origin + '/' + '../storage/img/defaultCoverImage.jpg' +"')"})
+                    } else {
+                        $("#banner").css({"background": "url('" + window.location.origin + '/' + userCoverImage +"')"})
+                    }
+
+                    if(userProfileImage == null) {
+                        $("#coverProfileImage").attr('src', window.location.origin + '/storage/img/defaultUserImage.jpg')
+                    } else {
+                        $("#coverProfileImage").attr('src', window.location.origin + '/' + userProfileImage)
+                    }
+
+                    $("#coverName").text(userName + ' ' + userLastname)
+                    $("#coverUsername").text(userUsername)
 
                     var posts = data['data'].posts
 
@@ -40,14 +64,13 @@ $(document).ready(function () {
 
                         $("#contentCards").append(
                             "<div class='card'>" +
-                                "<img src='" + contentPreviewImage + "' class='card-img-top'>" +
+                                "<img src='" + '../' + contentPreviewImage + "' class='card-img-top'>" +
                                 "<div class='card-body'>" +
                                     "<h5 class='card-title'>" + contentName + "</h5>" +
                                     "<p class='card-text'>" + contentDescription + "</p>" +
                                 "</div>" +
                                 "<div class='btn-group' role='group'>" +
-                                    "<a class='btnEdit' href='/admin/edit/"+ contentId + "'>Editar</a>" +
-                                    "<a class='btnDelete' href='/admin/edit/"+ contentId + "'>Eliminar</a>" +
+                                    "<a class='btnViewContent' href='/content/"+ contentId + "'>Ver completo</a>" +
                                 "</div>" +
                             "</div>"
                         )
@@ -56,7 +79,7 @@ $(document).ready(function () {
                     $("#contentAlert").show()
                 }
             } else if(code == 500) {
-                $("#contentAlert").show()
+                alert(data['data'])
             }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {

@@ -11,6 +11,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TrainingController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,4 @@ Route::get('/admin/edit/{contendId}', [AdminController::class, 'edit']);
 Route::post('/admin/addContent', [AdminController::class, 'addContent']);
 Route::get('/account', [AccountController::class, 'index']);
 Route::get('/content/{contentId}', [ContentController::class, 'index']);
+Route::get('/users/{userId}', [UsersController::class, 'index']);

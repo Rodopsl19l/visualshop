@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $("#newerContentAlert").hide();
+    $("#newerContentAlert").hide()
+    $("#followingAlert").hide()
 
     new WOW().init();
 
@@ -13,6 +14,8 @@ $(document).ready(function () {
             $("#navbar").removeClass("navbar-transparent");
         }
     });
+
+    var userId = $("#userId").data('value')
 
     $.ajax({
         type: 'GET',
@@ -50,11 +53,60 @@ $(document).ready(function () {
                     $("#newerContentAlert").show()
                 }
             } else if(code == 500) {
-                alert(data['data'])
+                $("#newerContentAlert").show()
             }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert(errorThrown)
+        }
+    })
+
+    $.ajax({
+        type: 'GET',
+        url: window.location.origin + '/api/followers/getAllFollowing/' + userId,
+        success: function(data) {
+            console.log("success")
+            console.log(data)
+            var code = data['code']
+
+            if(code == 200) {
+                var followingsLengrh = data['data'].length;
+                if(followingsLengrh != 0) {
+                    var followings = data['data']
+
+                    for(i = 0; i < followingsLengrh; i++) {
+                        var userFollowingId = followings[i]['user_following']['id']
+                        var userFollowingName = followings[i]['user_following']['name']
+                        var userFollowingLastname = followings[i]['user_following']['lastname']
+                        var userFollowingUsername = followings[i]['user_following']['username']
+                        var userFollowingImage = followings[i]['user_following']['profile_photo_path']
+
+                        if(userFollowingImage == null) {
+                            userFollowingImage = window.location.origin + '/storage/img/defaultUserImage.jpg'
+                        }
+
+                        $("#followingContentCards").append(
+                            "<div class='card' data-value='" + userFollowingId + "'>" +
+                                "<img src='" + userFollowingImage + "' class='card-img-top'>" +
+                                "<div class='card-body'>" +
+                                    "<h5 class='card-title'>" + userFollowingName + ' ' + userFollowingLastname + "</h5>" +
+                                    "<p class='card-text'>" + userFollowingUsername + "</p>" +
+                                "</div>" +
+                                "<div class='btn-group' role='group'>" +
+                                    "<a class='btnViewContent' href='/users/"+ userFollowingId + "'>Ver perfil</a>" +
+                                "</div>" +
+                            "</div>"
+                        )
+                    }
+                } else {
+                    $("#followingAlert").show()
+                }
+            } else if(code == 500) {
+                $("#followingAlert").show()
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert('error');
         }
     })
 })

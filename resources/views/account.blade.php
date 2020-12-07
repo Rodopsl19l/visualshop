@@ -45,34 +45,42 @@
                         <a class="nav-link" href="/contact">Contacto</a>
                     </li>
 
-                    <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin') ? 'active' : ''?>">
-                        <a class="nav-link" href="/admin">Administrar</a>
-                    </li>
+                    @if(!$userId)
+                        <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/login') ? 'active' : ''?>">
+                            <a class="nav-link" href="/login">Iniciar Sesión</a>
+                        </li>
+                    @endif
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Cuenta
-                        </a>
+                    @if($userId)
+                        <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin') ? 'active' : ''?> dropdown">
+                            <a class="nav-link" href="/admin">Administrar</a>
+                        </li>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/account">Editar</a>
-                            <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                        </div>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cuenta
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/account">Editar</a>
+                                <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </nav>
 
         <div id="banner">
             <div class="banner-mask">
-                <div id="coverCoverImage" class="banner-content" data-pos-x="left" data-parallax>
+                <div id="coverCoverImage" class="banner-content">
                     <div class="container">
                         <div class="row">
-                            <div class="col-3 wow fadeIn">
+                            <div class="col-12 col-md-3 wow fadeIn">
                                 <img id="coverProfileImage" class="card-img-top" style="border-radius: 50%;">
                             </div>
 
-                            <div class="col-9 wow fadeIn">
+                            <div class="col-12 col-md-9 wow fadeIn">
                                 <br>
                                 <span id="coverName" class="red-font"> Nombre del usuario</span>
                                 <br>
@@ -94,6 +102,10 @@
 
                 <div class="row">
                     <div id="requiredField" class="requiredField">
+                        <h2>Este campo es requerido</h2>
+                    </div>
+
+                    <div id="passwordsError" class="passwordsError">
                         <h2>Este campo es requerido</h2>
                     </div>
 
@@ -147,13 +159,13 @@
 
                         <div class="fileBox">
                             <label for="profileImage">Imagen de perfil</label>
-                            <img id="profileImage" class="card-img-top">
+                            <img id="userProfileImage" class="card-img-top">
                             <input id="profileImage" class="form-control-file" type="file" name="profileImage">
                         </div>
 
                         <div class="fileBox">
                             <label for="coverImage">Imagen de portada</label>
-                            <img id="coverImage" class="card-img-top">
+                            <img id="userCoverImage" class="card-img-top">
                             <input id="coverImage" class="form-control-file" type="file" name="coverImage">
                         </div>
 

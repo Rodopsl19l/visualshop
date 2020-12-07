@@ -9,9 +9,9 @@ class AdminController extends Controller
 {
     public function index(Request $request) {
         if($request->session()->has('user')) {
-            $posts = Post::all();
+            $userId = $request->session()->get('user.id');
 
-            return view('admin', compact('posts'));
+            return view('admin', compact('userId'));
         } else {
             return redirect('/');
         }
@@ -29,7 +29,8 @@ class AdminController extends Controller
 
     public function edit(Request $request, $id) {
         if($request->session()->has('user')) {
-            return view('edit', compact('id'));
+            $userId = $request->session()->get('user.id');
+            return view('edit', compact('id', 'userId'));
         } else {
             return redirect('/');
         }

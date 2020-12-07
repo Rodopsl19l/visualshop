@@ -60,7 +60,7 @@
 
 .contentImages {
     margin: 15px;
-    margin-top: 60px;
+    margin-top: 15px;
     font-weight: bold;
     background-color: #222222;
     padding: 30px;
@@ -181,3 +181,23 @@
     color: red;
     font-style: normal;
 }
+
+.contentOwner {
+    margin: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+    background-color: #222222;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.contentOwnertext {
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.contentImage {
+    padding: 2%;
+}
+

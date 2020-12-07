@@ -92,93 +92,13 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="section-title">
-                            El contenido más nuevo
+                            NUESTROS SERVICIOS
                         </div>
                     </div>
 
-                    <div class="card-columns">
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mini-banner" data-src="img/miniBanner1.jpg" data-pos-x="left" data-parallax>
-            <div class="banner-mask">
-                <div class="mini-banner-content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col wow fadeIn">
-                                <span class="red-font">¿BUSCAS AYUDA?
-                                </span><br>
-                                PUEDES <span class="red-font">CONTACTAR</span> CON LOS ARTISTAS
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="wow fadeInUp container">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="section-title">
-                            El contenido más nuevo
-                        </div>
-                    </div>
-
-                    <div class="card-columns">
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
+                    <div class="col-8">
+                        <div class="section-text text-center">
+                            Estamos trabajando en ello
                         </div>
                     </div>
                 </div>

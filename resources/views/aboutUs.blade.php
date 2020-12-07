@@ -111,7 +111,7 @@
                         <br>
 
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="card">
                                     <img src="{{asset('img/aboutUs/team-1.jpg')}}" class="card-img-top">
                                     <div class="card-body">
@@ -121,12 +121,12 @@
                                 </div>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="card">
-                                    <img src="{{asset('img/aboutUs/team-1.jpg')}}" class="card-img-top">
+                                    <img src="{{asset('img/aboutUs/team-2.jpg')}}" class="card-img-top">
                                     <div class="card-body">
                                         <h5 class="card-title">Javier Landeros Gaheta</h5>
-                                        <p class="card-text">Programador Front End</p>
+                                        <p class="card-text">Programador Front / Back End</p>
                                     </div>
                                 </div>
                             </div>

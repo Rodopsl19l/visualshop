@@ -109,62 +109,29 @@
             </div>
         </div>
 
-        <div class="mini-banner" data-src="img/miniBanner1.jpg" data-pos-x="left" data-parallax>
-            <div class="banner-mask">
-                <div class="mini-banner-content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col wow fadeIn">
-                                <span>¿BUSCAS AYUDA?
-                                </span><br>
-                                PUEDES <span class="red-font">CONTACTAR</span> CON LOS ARTISTAS
+        @if($userId)
+            <div class="section">
+                <div class="wow fadeInUp container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="section-title">
+                                Usuarios que sigues
                             </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div id="followingAlert" class="section-alert text-center">
+                                No sigues a nadie
+                            </div>
+                        </div>
+
+                        <div id="followingContentCards" class="card-columns text-center">
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="section">
-            <div class="wow fadeInUp container">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="section-title">
-                            El contenido más nuevo
-                        </div>
-                    </div>
-
-                    <div class="card-columns">
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{asset('img/card.jpg')}}" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Card title that wraps to a new line</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endif
 
         <div class="mini-banner" data-src="img/miniBanner1.jpg" data-pos-x="left" data-parallax>
             <div class="banner-mask">
@@ -181,6 +148,8 @@
                 </div>
             </div>
         </div>
+
+        <input id="userId" type="hidden" data-value="{{ $userId }}"/>
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
