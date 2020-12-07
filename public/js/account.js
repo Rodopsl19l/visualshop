@@ -40,16 +40,16 @@ $(document).ready(function () {
                 $("#coverUserType").text(userTypeName)
 
                 if(profileImage == null) {
-                    $("#coverProfileImage").attr('src', window.location.origin + '/' + '../storage/img/defaultUserImage.jpg')
-                    $("#userProfileImage").attr('src', window.location.origin + '/' + '../storage/img/defaultUserImage.jpg')
+                    $("#coverProfileImage").attr('src', window.location.origin + '/' + 'storage/img/defaultUserImage.jpg')
+                    $("#userProfileImage").attr('src', window.location.origin + '/' + 'storage/img/defaultUserImage.jpg')
                 } else {
                     $("#coverProfileImage").attr('src', window.location.origin + '/' + profileImage)
                     $("#userProfileImage").attr('src', window.location.origin + '/' + profileImage)
                 }
 
                 if(coverImage == null) {
-                    $("#banner").css({"background": "url('" + window.location.origin + '/' + '../storage/img/defaultCoverImage.jpg' +"')"})
-                    $("#userCoverImage").attr('src', window.location.origin + '/' + '../storage/img/defaultCoverImage.jpg')
+                    $("#banner").css({"background": "url('" + window.location.origin + '/' + 'storage/img/defaultCoverImage.jpg' +"')"})
+                    $("#userCoverImage").attr('src', window.location.origin + '/' + 'storage/img/defaultCoverImage.jpg')
                 } else {
                     $("#banner").css({"background": "url('" + window.location.origin + '/' + coverImage +"')"})
                     $("#userCoverImage").attr('src', window.location.origin + '/' + coverImage)

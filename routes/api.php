@@ -8,7 +8,6 @@ use App\Http\Controllers\Api\PostVideosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UsersController;
-use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------

@@ -18,7 +18,7 @@ $(document).ready(function () {
             if(password === confirmPassword) {
                 $.ajax({
                     type: 'POST',
-                    url: window.location.origin + '/api/users/',
+                    url: window.location.origin + '/api/users',
                     data: {
                         'user_type_id': 2,
                         'name': name,
@@ -29,6 +29,7 @@ $(document).ready(function () {
                         'phone': phone
                     },
                     success: function(data) {
+                        console.log("funciona")
                         var code = data['code']
 
                         if(code == 200) {

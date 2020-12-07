@@ -61,52 +61,54 @@ $(document).ready(function () {
         }
     })
 
-    $.ajax({
-        type: 'GET',
-        url: window.location.origin + '/api/followers/getAllFollowing/' + userId,
-        success: function(data) {
-            console.log("success")
-            console.log(data)
-            var code = data['code']
+    if(userId != 0){
+        $.ajax({
+            type: 'GET',
+            url: window.location.origin + '/api/followers/getAllFollowing/' + userId,
+            success: function(data) {
+                console.log("success")
+                console.log(data)
+                var code = data['code']
 
-            if(code == 200) {
-                var followingsLengrh = data['data'].length;
-                if(followingsLengrh != 0) {
-                    var followings = data['data']
+                if(code == 200) {
+                    var followingsLengrh = data['data'].length;
+                    if(followingsLengrh != 0) {
+                        var followings = data['data']
 
-                    for(i = 0; i < followingsLengrh; i++) {
-                        var userFollowingId = followings[i]['user_following']['id']
-                        var userFollowingName = followings[i]['user_following']['name']
-                        var userFollowingLastname = followings[i]['user_following']['lastname']
-                        var userFollowingUsername = followings[i]['user_following']['username']
-                        var userFollowingImage = followings[i]['user_following']['profile_photo_path']
+                        for(i = 0; i < followingsLengrh; i++) {
+                            var userFollowingId = followings[i]['user_following']['id']
+                            var userFollowingName = followings[i]['user_following']['name']
+                            var userFollowingLastname = followings[i]['user_following']['lastname']
+                            var userFollowingUsername = followings[i]['user_following']['username']
+                            var userFollowingImage = followings[i]['user_following']['profile_photo_path']
 
-                        if(userFollowingImage == null) {
-                            userFollowingImage = window.location.origin + '/storage/img/defaultUserImage.jpg'
+                            if(userFollowingImage == null) {
+                                userFollowingImage = window.location.origin + '/storage/img/defaultUserImage.jpg'
+                            }
+
+                            $("#followingContentCards").append(
+                                "<div class='card' data-value='" + userFollowingId + "'>" +
+                                    "<img src='" + userFollowingImage + "' class='card-img-top'>" +
+                                    "<div class='card-body'>" +
+                                        "<h5 class='card-title'>" + userFollowingName + ' ' + userFollowingLastname + "</h5>" +
+                                        "<p class='card-text'>" + userFollowingUsername + "</p>" +
+                                    "</div>" +
+                                    "<div class='btn-group' role='group'>" +
+                                        "<a class='btnViewContent' href='/users/"+ userFollowingId + "'>Ver perfil</a>" +
+                                    "</div>" +
+                                "</div>"
+                            )
                         }
-
-                        $("#followingContentCards").append(
-                            "<div class='card' data-value='" + userFollowingId + "'>" +
-                                "<img src='" + userFollowingImage + "' class='card-img-top'>" +
-                                "<div class='card-body'>" +
-                                    "<h5 class='card-title'>" + userFollowingName + ' ' + userFollowingLastname + "</h5>" +
-                                    "<p class='card-text'>" + userFollowingUsername + "</p>" +
-                                "</div>" +
-                                "<div class='btn-group' role='group'>" +
-                                    "<a class='btnViewContent' href='/users/"+ userFollowingId + "'>Ver perfil</a>" +
-                                "</div>" +
-                            "</div>"
-                        )
+                    } else {
+                        $("#followingAlert").show()
                     }
-                } else {
+                } else if(code == 500) {
                     $("#followingAlert").show()
                 }
-            } else if(code == 500) {
-                $("#followingAlert").show()
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert('error');
             }
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-            alert('error');
-        }
-    })
+        })
+    }
 })
